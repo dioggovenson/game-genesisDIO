@@ -15,6 +15,7 @@ const spanScore = document.querySelector('.spanScore');
 const btnStart = document.querySelector('.btnStart');
 const spanLifes = document.querySelector('.spanLifes');
 
+spanLifes.innerHTML = "&hearts;&hearts;&hearts;&hearts;&hearts;";
 spanScore.textContent = score;
 btnStart.textContent = "INICIAR";
 //cria ordem aletoria de cores
@@ -40,17 +41,18 @@ let lightColor = (element, number) => {
     }, 1000);
 }
 
+
 //checa se os botoes clicados são os mesmos da ordem gerada no jogo
 let checkOrder = () => {
     for (let i in clickedOrder) {
-        if (clickedOrder[i] != order[i]) {
+        if (clickedOrder[i] == order[i]) {
+            if (clickedOrder.length == order.length) {
+                nextLevel();
+            }
+        } else {
             gameOver();
             break;
         }
-    }
-    if (clickedOrder.length == order.length) {
-
-        nextLevel();
     }
 }
 
@@ -81,16 +83,17 @@ let createColorElement = (color) => {
 //funcao para proximo nivel do jogo
 let nextLevel = () => {
     score++;
-    if (score !== 0) {
-        alert(`Pontuação: ${score}\nVocê acertou! Iniciando próximo nível!`);
-        spanScore.textContent = score
-    }
+    changeLife("+")
+
+    alert(`Pontuação: ${score}\nVocê acertou! Clique em próximo nivel`);
+    spanScore.textContent = score
+
     shuffleOrder();
 }
 
 //funcao para game over
 let gameOver = () => {
-
+    changeLife("-")
     btnStart.textContent = "REINICIAR";
     alert(`Pontuação: ${score}!\nVocê perdeu o jogo!\nClique em REINICIAR para iniciar um novo jogo`);
     order = [];
@@ -98,7 +101,20 @@ let gameOver = () => {
     score = 0
     spanScore.textContent = 0
 }
-
+//função para adicionar ou remover vidas
+let changeLife = (func) => {
+    if (func == "-" && lifes > 0) {
+        lifes--;
+    }
+    if (func == "+" && lifes < 5) {
+        lifes++;
+    }
+    let hearts = "";
+    for (let i = 1; i <= lifes; i++) {
+        hearts += "&hearts;"
+    }
+    spanLifes.innerHTML = hearts
+}
 //funcao de inicio do jogo
 let playGame = () => {
 
