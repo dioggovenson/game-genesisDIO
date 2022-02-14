@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    background-color: rgb(203, 243, 230);
+}
+.main-game {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-game {
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+}
+.button {
+    width: 150px;
+}
+.button .btnStart {
+    display: flex;
+    background-color: #5fb2ee;
+    padding: 5px 10px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    justify-content: space-between;
+    margin-right: 15px;
+    border: 2px solid #5fb2ee;
+}
+.spanLifes {
+    text-align: center;
+    color: red;
+    font-size: 32px;
+    letter-spacing: 5px;
+}
+.score {
+    width: 150px;
+}
+.score div {
+    display: flex;
+    background-color: white;
+    padding: 5px 10px;
+    width: 67px;
+    float: right;
+    color: black;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+
+.spanScore {
+    margin: 0 auto;
+}
+.genius {
+    display: grid;
+    grid-template-areas:
+        "verde vermelho"
+        "amarelo azul";
+    grid-gap: 10px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 100%;
+    width: 500px;
+    height: 500px;
+}
+.blue {
+    grid-area: azul;
+    background-color: rgb(38, 60, 255);
+    border-bottom-right-radius: 100%;
+}
+.red {
+    grid-area: vermelho;
+    background-color: red;
+    border-top-right-radius: 100%;
+}
+.yellow {
+    grid-area: amarelo;
+    background-color: yellow;
+    border-bottom-left-radius: 100%;
+}
+.green {
+    grid-area: verde;
+    background-color: green;
+    border-top-left-radius: 100%;
+}
+.selected {
+    opacity: 0.5;
+}
